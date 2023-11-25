@@ -1,0 +1,51 @@
+{
+  "root": true,
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:svelte/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2020,
+    "extraFileExtensions": [".svelte"]
+  },
+  "env": {
+    "browser": true,
+    "es2017": true,
+    "node": true
+  },
+  "overrides": [
+    {
+      "files": ["*.svelte"],
+      "parser": "svelte-eslint-parser",
+      "parserOptions": {
+        "parser": "@typescript-eslint/parser"
+      }
+    }
+  ],
+  "rules": {
+    "unused-imports/no-unused-imports": "warn",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin", // 組み込みモジュール
+          "external", // yarnでインストールした外部ライブラリ
+          "internal", // 自作モジュール
+          "parent", // 親階層のファイル
+          "sibling", // 同階層のファイル
+          "index" // 同階層の index ファイル
+        ],
+        "newlines-between": "always", // グループ毎にで改行を入れる
+        "alphabetize": {
+          "order": "asc", // 昇順にソート
+          "caseInsensitive": true // 小文字大文字を区別する
+        }
+      }
+    ]
+  }
+}
